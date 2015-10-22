@@ -97,7 +97,7 @@ double avg(vector<double>v)
 string local_send_request(const string & _request) {
 
   if (_request.compare(0, 5, "hello") == 0) {
-    return "yo";
+    return "Hello back to you.";
   }
   else if (_request.compare(0, 4, "data") == 0) {
     return (int2string(rand() % 100));
@@ -135,7 +135,7 @@ int main(int argc, char * argv[]) {
 		gettimeofday(&begin1,NULL);
 		string reply1 = chan.send_request("hello");
 		gettimeofday(&end1,NULL);
-		// cout << "Reply to request 'hello' is '" << reply1 << "'" << endl;
+		cout << "Reply to request 'hello' is '" << reply1 << "'" << endl;
 		
 		timeval begin2, end2; //function test
         gettimeofday(&begin2,NULL);
@@ -154,17 +154,17 @@ int main(int argc, char * argv[]) {
 			(double)gettimeofday(&start, NULL);
 			string request_string("data TestRandom" + int2string(i));
 			string reply_string = local_send_request(request_string);
-			//cout << "reply to request " << i << ":" << reply_string << endl;;
+			cout << "reply to request " << i << ":" << reply_string << endl;;
 			(double)gettimeofday(&finish, NULL);
 			sd.push_back((double)(finish.tv_usec - start.tv_usec));
 			
-			timeval start2, finish2;
+		/*	timeval start2, finish2;
 			(double)gettimeofday(&start, NULL);
 			string request_string1("data TestRandom" + int2string(i));
 			string reply_string1 = chan.send_request(request_string1);
-			//cout << "reply to request " << i << ":" << reply_string << endl;;
+			cout << "reply to request " << i << ":" << reply_string << endl;;
 			(double)gettimeofday(&finish, NULL);
-			sd1.push_back((double)(finish2.tv_usec - start2.tv_usec));
+			//sd1.push_back((double)(finish2.tv_usec - start2.tv_usec));*/
 		}
 			
 		timeval begin4, end4;
@@ -179,10 +179,11 @@ int main(int argc, char * argv[]) {
 		cout << "Standard Deviation (function): " << sDev(sd) << " us" << endl;
 		cout << "Average (function): " << avg(sd) << " us" << endl;
 		cout << endl;
-		cout << "Standard Deviation (server): " << sDev(sd1) << " us" << endl;
-		cout << "Average (server): " << avg(sd1) << " us" << endl;
+		//cout << "Standard Deviation (server): " << sDev(sd1) << " us" << endl;
+		//cout << "Average (server): " << avg(sd1) << " us" << endl;
 		
 		usleep(100000);
 		return 0;
 	}
 }
+
