@@ -189,8 +189,6 @@ int main(int argc, char ** argv) {
 		i++;
 	}
 	
-	
-	
 	//context switch is in status, last two (voluntary and involuntary)
 	//1 2 3 4 5 7
 }
